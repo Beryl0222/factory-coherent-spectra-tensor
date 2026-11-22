@@ -170,11 +170,27 @@
       },
       {
         "channel": "b",
+        "id": "b-bridge",
+        "trigger": "t0",
+        "rev": 1,
+        "start": 4,
+        "tensor": "b_bridge"
+      },
+      {
+        "channel": "b",
         "id": "b2",
         "trigger": "t0",
         "rev": 1,
         "start": 10,
         "tensor": "b2"
+      },
+      {
+        "channel": "b",
+        "id": "b-other",
+        "trigger": "t1",
+        "rev": 1,
+        "start": 14,
+        "tensor": "b_other"
       },
       {
         "channel": "b",
@@ -218,7 +234,15 @@
         "min_windows": 2
       }
     ],
-    "frozen_after_block": 4
+    "frozen_after_block": 6,
+    "frozen_request": {
+      "trigger": "t0",
+      "pair": [
+        "a",
+        "b"
+      ],
+      "band": "low"
+    }
   },
   "tensors": {
     "a1": {
@@ -319,6 +343,32 @@
         0,
         0,
         0
+      ]
+    },
+    "b_bridge": {
+      "dtype": "float64",
+      "shape": [
+        6
+      ],
+      "values": [
+        3,
+        2,
+        1,
+        -2,
+        1,
+        4
+      ]
+    },
+    "b_other": {
+      "dtype": "float64",
+      "shape": [
+        4
+      ],
+      "values": [
+        7,
+        1,
+        -2,
+        5
       ]
     }
   }
