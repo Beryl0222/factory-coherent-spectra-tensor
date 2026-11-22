@@ -1,0 +1,9 @@
+{
+  "channels": 24,
+  "samples_per_channel": 450000,
+  "nfft": 256,
+  "hop": 96,
+  "bands": 16,
+  "max_workspace_bytes": 12582912,
+  "seed": 713
+}
