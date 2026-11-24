@@ -22,3 +22,12 @@ python -m unittest discover -s tests -v
 ```
 
 现有检查核对采集格式和所附数据的结构。
+
+## 算子与回放
+
+- `spectral_op.py` 实现分窗频谱算子 `SpectralOperator`。`report_block` 采入块上报并给出回执（ingested / duplicate / stale / rejected)，更正只重折受影响窗口中含本通道的配对；`query` / `query_all` 查当前仍开放的结果；`claim` 冻结谱快照并返回凭据，`fetch` 按原凭据重查，后续更正不改旧快照的谱量与支持窗；`status` 给出各触发下配对与频带的交接状态和支持窗身份；`workspace_bytes` 与 `estimate_workspace` 估算工作区，复数谱逐窗折入 （配对， 频段） 累计器后即弃，不留全量。
+- `scenario.py` 按 `frozen_after_block` 与 `frozen_request` 回放采集清单，对照当前开放结果与旧凭据快照：
+
+```sh
+python scenario.py data/capture.json
+```
